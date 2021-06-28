@@ -1,0 +1,128 @@
+<html>
+    <head>
+        
+        <style>
+        html{
+            scroll-behavior: smooth;
+        }
+         *{
+             margin: 0;
+             padding:0;
+             box-sizing: border-box;
+         } 
+         nav{
+             height:15vh;
+             background-color: black;
+             color: white;
+             display:flex;
+             justify-content: center;
+             align-items: center;
+             
+         }
+        
+         
+         .nav-links{
+             display:flex;
+             align-items: center;
+             justify-content: space-around;
+             list-style: none;
+             width: 50%;
+             height:100%;
+             margin-left: auto;
+         }
+         .landing{
+             text-align: center;
+         }
+         
+         @media (max-width:360px){
+             .line{
+                 width: 30px;
+                 height:5px;
+                 margin: 5px;
+                 background:white;
+                 border-radius: 5px;
+             }
+             nav{
+                 position: relative;
+             }
+           
+             .hamburger{
+                 position: absolute;
+                 cursor: pointer;
+                 right:4%;
+                 top:25%;
+                 z-index: 2;
+             }
+             .nav-links{
+                 position: fixed;
+                 background-color: black;
+                 height:100vh;
+                 width:100%;
+                 flex-direction: column;
+                 clip-path: circle(100px at 90% -20%);
+                 -webkit-clip-path: circle(100px at 90%-20%);
+                 transition: all 1s ease-out;
+             }
+             .nav-links.open{
+               clip-path: circle(700px at 90%-10%); 
+               -webkit-clip-path: circle (700px at 90%-10%);
+             }
+             
+             .line.animate:nth-child(1){
+                 transform: rotate(135deg);
+                 
+                 
+             }
+             .line.animate:nth-child(2){
+                 opacity: 0;
+             }
+             .line.animate:nth-child(3){
+                 transform:rotate(135deg);
+             }
+            
+            
+            
+             
+         }
+        </style>
+        <script>
+        function Bubble(){
+          motion=document.querySelectorAll('.line');
+          hamburger = document.querySelector('.hamburger');
+          navlinks = document.querySelector('.nav-links');
+      
+          navlinks.classList.toggle('open');
+             
+         motion.forEach(bar => {
+                    bar.classList.toggle('animate')
+                });
+         console.log(motion)
+              
+          };
+          
+        
+        
+          
+        </script>
+        <title>The Coffee Shop</title>
+    </head>
+    <body>
+       <nav>
+           <h2>Nescafé</h2>
+           <div class="hamburger" onclick="Bubble()">
+               
+               <div class="line"></div>
+               <div class="line"></div>
+               <div class="line"></div>
+           </div>
+           <ul class="nav-links">
+               <li>Home</li>
+               <li>About</li>
+               <li>Contact</li>
+           </ul>
+       </nav> 
+       <section class="landing">
+           <h2>The Hamburger Menu</h2>
+       </section>
+    </body>
+</html>
